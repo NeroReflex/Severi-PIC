@@ -1,4 +1,4 @@
-#include "LCD.h"
+#include "Severi.h"
 
 void LCD_Init(void)
 {

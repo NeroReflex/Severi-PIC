@@ -1,16 +1,5 @@
 #include "Severi.h"
 
-// BEGIN CONFIG
-#pragma config FOSC = XT // Oscillator Selection bits (HS oscillator)
-#pragma config WDTE = OFF // Watchdog Timer Enable bit (WDT enabled)
-#pragma config PWRTE = OFF // Power-up Timer Enable bit (PWRT disabled)
-#pragma config BOREN = OFF // Brown-out Reset Enable bit (BOR enabled)
-#pragma config LVP = OFF // Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
-#pragma config CPD = OFF // Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
-#pragma config WRT = OFF // Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
-#pragma config CP = OFF // Flash Program Memory Code Protection bit (Code protection off)
-//END CONFIG
-
 int main()
 {
   //counter for various uses
@@ -32,10 +21,16 @@ int main()
     //keep the display readable for 1s
     __delay_ms(1000);
 
-    //writing other nice stuff
-    LCD_Set_Cursor(2,5);
-    LCD_Write_String("2014/2015");
+    //build the version string
+    char SeveriVersion[10] = "\0";
+    sprintf(SeveriVersion, "%d.%d%c", SEVERI_MAJOR_VERSION, SEVERI_MINOR_VERSION, SEVERI_STATUS_VERSION);
+
+    //display the version of the severi software library
+    LCD_Set_Cursor(2,3);
+    LCD_Write_String(SeveriVersion);
     __delay_ms(1000);
+
+    //write other nice stuff
     LCD_Clear();
     LCD_Set_Cursor(1,3);
     LCD_Write_String("You'll find");
