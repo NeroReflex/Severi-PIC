@@ -1,9 +1,7 @@
 #ifndef __LCD_SEVERI__
 #define __LCD_SEVERI__
 
-#define _XTAL_FREQ 4000000
-
-#include <xc.h>
+#include "Severi.h"
 
 /*****************************************************************
 * change the I/O data lines if you aren't not using a demo-board *
