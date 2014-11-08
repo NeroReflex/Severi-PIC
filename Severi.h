@@ -21,7 +21,7 @@
 //version of the software library
 #define SEVERI_MAJOR_VERSION 0
 #define SEVERI_MINOR_VERSION 1
-#define SEVERI_STATUS_VERSION 'a'
+#define SEVERI_STATUS_VERSION 'b'
 
 
 #endif //	XTAL_FREQ 
