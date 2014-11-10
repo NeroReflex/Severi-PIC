@@ -1,5 +1,6 @@
 #include "Severi.h"
 
+
 int main()
 {
   //counter for various uses
@@ -43,10 +44,17 @@ int main()
     __delay_ms(1000);
 
     //a cycle that will shift the "in love" string left (5 times)
-    for(a=0;a!=5;a++)
+    for(a=0;a!=4;a++)
     {
         __delay_ms(300);
         LCD_Shift_Left();
+    }
+
+    //a cycle that will shift the "in love" string right (5 times)
+    for(a=0;a!=4;a++)
+    {
+        __delay_ms(300);
+        LCD_Shift_Right();
     }
 
     //a cycle that will shift the "in love" string right (5 times)
@@ -55,8 +63,15 @@ int main()
         __delay_ms(300);
         LCD_Shift_Right();
     }
+
+    //a cycle that will shift the "in love" string right (5 times)
+    for(a=0;a!=4;a++)
+    {
+        __delay_ms(300);
+        LCD_Shift_Left();
+    }
 	
-	//keep the display readable for 1s
+    //keep the display readable for 1s
     __delay_ms(1000);
   }
   return 0;

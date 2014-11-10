@@ -25,18 +25,24 @@ void LCD_Init(void)
 
     LCD_Port(0x00);
     __delay_ms(20); //wait until the display has finished its operations (use 22ms or 21ms if 20 is not enough)
-    LCD_Cmd(0x03);
+	RS = 0;         // => RS = 0
+    LCD_Port(0x03);  // give the init command
+    EN  = 1;        // => E = 1
+    __delay_ms(4);  //wait a huge time
+	//we are now sure that the data has been received by the LCD
+    EN  = 0;        // => E = 0
     __delay_ms(5); //wait until the display has finished its operations (use 5ms or 6ms if 5 is not enough)
-    LCD_Cmd(0x03);
+    RS = 0;         // => RS = 0
+    LCD_Port(0x03);  // give the init command
+    EN  = 1;        // => E = 1
+    __delay_ms(4);  //wait a huge time
+	//we are now sure that the data has been received by the LCD
+    EN  = 0;        // => E = 0
     __delay_ms(10); //wait until the display has finished its operations (use 11ms or 12ms if 9 is not enough)
-    LCD_Cmd(0x03);
-    LCD_Cmd(0x02);
-    LCD_Cmd(0x02);
-    LCD_Cmd(0x08);
-    LCD_Cmd(0x00);
-    LCD_Cmd(0x0C);
-    LCD_Cmd(0x00);
-    LCD_Cmd(0x06);
+    LCD_Cmd(0x23);
+    LCD_Cmd(0x82);
+    LCD_Cmd(0xC0);
+    LCD_Cmd(0x60);
 }
 
 void LCD_Port(char nibbleOfData)
@@ -80,11 +86,11 @@ void LCD_Cmd(char cmd)
 	
 	//send the second nibble of command
 	RS = 0;         // => RS = 0
-    LCD_Port(cmd >> 4);  // output the data
-    EN  = 1;        // => E = 1
-    __delay_ms(4);  //wait a huge time
+	LCD_Port(cmd >> 4);  // output the data
+	EN  = 1;        // => E = 1
+	__delay_ms(4);  //wait a huge time
 	//we are now sure that the data has been received by the LCD
-    EN  = 0;        // => E = 0
+	EN  = 0;
 }
 
 void LCD_Clear(void)

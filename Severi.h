@@ -5,7 +5,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+//auxiliary libraries
 #include "LCD.h"
+
+#ifndef __CONFIG__
+#define __CONFIG__ 0
 
 // BEGIN CONFIGURATION
 #pragma config FOSC = XT // Oscillator Selection bits (HS oscillator)
@@ -17,6 +22,8 @@
 #pragma config WRT = OFF // Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
 #pragma config CP = OFF // Flash Program Memory Code Protection bit (Code protection off)
 //END CONFIGURATION
+
+#endif //__CONFIG__
 
 //version of the software library
 #define SEVERI_MAJOR_VERSION 0
