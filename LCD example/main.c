@@ -17,30 +17,30 @@ int main()
     LCD_Set_Cursor(1,2);
 
     //write a string
-    LCD_Write_String("Severi-PIC/LCD");
+    LCD_printf("Severi-PIC/LCD");
 
     //keep the display readable for 1s
     __delay_ms(1000);
 
     //build the version string
-    char SeveriVersion[10] = "\0";
-    sprintf(SeveriVersion, "%d.%d%c", SEVERI_MAJOR_VERSION, SEVERI_MINOR_VERSION, SEVERI_STATUS_VERSION);
+    /*char SeveriVersion[10] = "\0";
+    sprintf(SeveriVersion, "%d.%d%c", SEVERI_MAJOR_VERSION, SEVERI_MINOR_VERSION, SEVERI_STATUS_VERSION);*/
 
     //display the version of the severi software library
     LCD_Set_Cursor(2,3);
-    LCD_Write_String(SeveriVersion);
+    LCD_printf("%d.%d%c", SEVERI_MAJOR_VERSION, SEVERI_MINOR_VERSION, SEVERI_STATUS_VERSION);
     __delay_ms(1000);
 
     //write other nice stuff
     LCD_Clear();
     LCD_Set_Cursor(1,3);
-    LCD_Write_String("You'll find");
+    LCD_printf("You'll find");
     LCD_Set_Cursor(2,5);
-    LCD_Write_String("meaning");
+    LCD_printf("meaning");
     __delay_ms(1000);
     LCD_Clear();
     LCD_Set_Cursor(1,5);
-    LCD_Write_String("in love");
+    LCD_printf("in love");
     __delay_ms(1000);
 
     //a cycle that will shift the "in love" string left (5 times)

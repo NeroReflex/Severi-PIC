@@ -8,6 +8,7 @@
 
 //auxiliary libraries
 #include "LCD.h"
+#include "printf.h"
 
 #ifndef __CONFIG__
 #define __CONFIG__ 0
