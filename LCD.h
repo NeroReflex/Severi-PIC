@@ -48,4 +48,7 @@ void LCD_Shift_Right(void);
 //Moves each character on the LCD to its left position
 void LCD_Shift_Left(void);
 
+//Moves the cursor position and print the string
+void LCD_printf_position(char, char, char*, ...);
+
 #endif // __LCD_SEVERI__

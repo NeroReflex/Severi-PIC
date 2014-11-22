@@ -97,7 +97,6 @@ void LCD_Clear(void)
 {
     //send the two commands needed to clear the LCD
     LCD_Cmd(0x10);
-    /* LCD_Cmd(0x01); */
 }
 
 void LCD_Set_Cursor(char row, char column)
@@ -109,9 +108,7 @@ void LCD_Set_Cursor(char row, char column)
     //else cursorPosition will have the number corresponding to the second row and first column
     cursorPosition += column - 1; //calculate the number corresponding to the specified position
         //column - 1 is necessary: the first column available is he one corresponding to the number 1
-    /* LCD_Cmd(cursorPosition >> 4);
-    LCD_Cmd(cursorPosition & 0x0F); */
-	LCD_Cmd(((cursorPosition >> 4) & 0x0f) | ((cursorPosition << 4) & 0xf0));
+    LCD_Cmd(((cursorPosition >> 4) & 0x0f) | ((cursorPosition << 4) & 0xf0));
 }
 
 void LCD_Write_Char(char toBeDisplayed)
@@ -144,12 +141,20 @@ void LCD_Shift_Right(void)
 {
     //send the two commands needed to perform the right shift on the LCD
     LCD_Cmd(0xC1);
-    /* LCD_Cmd(0x0C); */
 }
 
 void LCD_Shift_Left(void)
 {
     //send the two commands needed to perform the left shift on the LCD
     LCD_Cmd(0x81);
-    /* LCD_Cmd(0x08); */
+}
+
+void LCD_printf_position(char row, char column, char *fmt, ...)
+{
+    va_list va;
+    va_start(va,fmt);
+
+    //move the cursor
+    LCD_Set_Cursor(row, column);
+    LCD_printf(fmt, va);
 }

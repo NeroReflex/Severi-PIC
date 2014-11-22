@@ -144,4 +144,3 @@ void LCD_printf(char *fmt, ...)
 	abort:;
 	va_end(va);
 	}
-

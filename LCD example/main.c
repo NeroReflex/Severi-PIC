@@ -5,6 +5,9 @@ int main()
 {
   //counter for various uses
   unsigned int a;
+  
+  //times that the program is executed
+  long times = 0x00;
 
   //initialize display
   LCD_Init();
@@ -70,9 +73,22 @@ int main()
         __delay_ms(300);
         LCD_Shift_Left();
     }
-	
+
+    //demostrate the use of LCD_printf(...)
+    __delay_ms(1000);
+    LCD_Clear();
+    for (a = 0; a < 200; a++)
+    {
+        LCD_Set_Cursor(1, 1);
+        LCD_printf("a value: %u", a);
+        __delay_ms(400);
+    }
+
     //keep the display readable for 1s
     __delay_ms(1000);
+
+    //the program have been executed amother time
+    times++;
   }
   return 0;
 }
