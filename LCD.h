@@ -18,11 +18,9 @@
 
 //LCD Functions Developed by electroSome
 
-
 //Internal use only
 void LCD_Port(char); //avoid to use this subroutine if it is unnecessary to send a command to the LCD without waiting the LCD to complete its internal operations
 // ! BEWARE ! Use LCD_Cmd instead
-
 
 //Gives a command to the LCD. See datasheet for a list of available commands
 void LCD_Cmd(char);
@@ -48,7 +46,19 @@ void LCD_Shift_Right(void);
 //Moves each character on the LCD to its left position
 void LCD_Shift_Left(void);
 
-//Moves the cursor position and print the string
-void LCD_printf_position(char, char, char*, ...);
+//shut down the lcd display. Off with false=0, On with everyting else including true=1
+void LCD_Power_on(unsigned char);
+
+//create a custom character in the lcd display
+void LCD_Upload_Custom_Char(unsigned char* , unsigned char );
+
+//write a given custom character
+void LCD_Write_Custom_Char(unsigned char position);
+
+//printf a formatted string on the lcd display
+void LCD_printf(char *fmt, ...);
+
+//printf a formatted string on the lcd display in the specified position
+void LCD_printf_position(char row, char column, char *fmt, ...);
 
 #endif // __LCD_SEVERI__
